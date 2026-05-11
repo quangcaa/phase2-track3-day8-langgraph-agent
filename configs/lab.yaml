@@ -1,3 +1,3 @@
 scenarios_path: data/sample/scenarios.jsonl
 checkpointer: memory
-report_path: reports/lab_report.md
+# report_path: reports/lab_report.md  # disabled to preserve manual report

@@ -1,0 +1,14 @@
+State history for thread-S05_error (12 checkpoints)
+
+[0] step=10 source=loop route=error attempt=2
+[1] step=9 source=loop route=error attempt=2
+[2] step=8 source=loop route=error attempt=2
+[3] step=7 source=loop route=error attempt=2
+[4] step=6 source=loop route=error attempt=2
+[5] step=5 source=loop route=error attempt=1
+[6] step=4 source=loop route=error attempt=1
+[7] step=3 source=loop route=error attempt=1
+[8] step=2 source=loop route=error attempt=0
+[9] step=1 source=loop route= attempt=0
+[10] step=0 source=loop route= attempt=0
+[11] step=-1 source=input route= attempt=0

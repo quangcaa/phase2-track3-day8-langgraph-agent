@@ -8,24 +8,35 @@ from .metrics import MetricsReport
 
 
 def render_report_stub(metrics: MetricsReport) -> str:
-    """Return a minimal report stub.
+    """Return a metrics summary report.
 
-    TODO(student): replace with a richer report using the template in reports/.
+    The full lab report is maintained manually in reports/lab_report.md.
+    This stub is auto-generated alongside metrics.json for quick reference.
     """
-    return f"""# Day 08 Lab Report
-
-## Metrics summary
-
-- Total scenarios: {metrics.total_scenarios}
-- Success rate: {metrics.success_rate:.2%}
-- Average nodes visited: {metrics.avg_nodes_visited:.2f}
-- Total retries: {metrics.total_retries}
-- Total interrupts: {metrics.total_interrupts}
-
-## TODO(student)
-
-Explain your architecture, state schema, failure modes, and improvement plan.
-"""
+    lines = [
+        "# Day 08 Lab Report",
+        "",
+        "## Metrics summary",
+        "",
+        f"- Total scenarios: {metrics.total_scenarios}",
+        f"- Success rate: {metrics.success_rate:.2%}",
+        f"- Average nodes visited: {metrics.avg_nodes_visited:.2f}",
+        f"- Total retries: {metrics.total_retries}",
+        f"- Total interrupts: {metrics.total_interrupts}",
+        "",
+        "## Scenario details",
+        "",
+        "| Scenario | Expected | Actual | Success | Retries | Errors |",
+        "|---|---|---|---:|---:|---:|",
+    ]
+    for m in metrics.scenario_metrics:
+        status = "✓" if m.success else "✗"
+        lines.append(
+            f"| {m.scenario_id} | {m.expected_route} | {m.actual_route} "
+            f"| {status} | {m.retry_count} | {len(m.errors)} |"
+        )
+    lines.append("")
+    return "\n".join(lines)
 
 
 def write_report(metrics: MetricsReport, output_path: str | Path) -> None:
